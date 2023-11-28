@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('is_major')->default(0);
+            $table->tinyInteger('type')->comment('0-language,1-framework,2-complex');
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

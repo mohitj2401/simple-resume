@@ -17,8 +17,9 @@ return new class extends Migration
             $table->text('skill_used')->nullable();
             $table->string("start_date");
             $table->string("end_date");
-            $table->tinyInteger('type')->comment('0->personal,2->professional');
+            $table->tinyInteger('type')->comment('0-personal,1-professional');
             $table->text('pointers')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
