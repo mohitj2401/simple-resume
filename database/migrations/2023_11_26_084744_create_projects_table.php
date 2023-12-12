@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("start_date");
             $table->string("end_date");
             $table->tinyInteger('type')->comment('0-personal,1-professional');
+            $table->text('project_link')->nullable();
             $table->text('pointers')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
