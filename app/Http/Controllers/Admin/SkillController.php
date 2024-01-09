@@ -32,13 +32,16 @@ class SkillController extends Controller
                 ->addColumn('action', function ($row) {
                     $action = '';
                     $action = '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@edit', [$row->id]) . '" class="btn btn-sm btn-primary btn-modal"  data-container="#ajax_modal"><i class="glyphicon glyphicon-edit"></i>' . __("Edit") . '</button>&nbsp;';
-                    $action = $action . '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@show', [$row->id]) . '" class="btn btn-sm btn-secondary btn-modal"  data-container="#ajax_modal"><i class="glyphicon glyphicon-eye"></i>' . __("View") . '</button>&nbsp;';
+
                     $action = $action .  '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@destroy', [$row->id]) . '" class="btn btn-sm btn-danger delete_button" ><i class="glyphicon glyphicon-trash"></i>' . __("Delete") . '</button>';
                     return $action;
                 })
 
                 ->editColumn('type', function ($row) {
                     return $row->type === 1 ? "Framework" : "Language";
+                })
+                ->editColumn('status', function ($row) {
+                    return $row->active === 1 ? "Active" : "Inactive";
                 })
                 ->rawColumns(['action'])
                 ->make(true);

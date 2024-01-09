@@ -38,6 +38,7 @@
                                             <th style="width: 30px">Id</th>
                                             <th>Name</th>
                                             <th>Type</th>
+                                            <th>Status</th>
 
 
 
@@ -60,6 +61,7 @@
     <div class="modal fade" id="ajax_modal1" tabindex="-1" role="dialog"></div>
 
     <x-slot name="customJs">
+
         <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
         <script src="{{ asset('assets/js/height-equal.js') }}"></script>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -67,6 +69,8 @@
         <script>
             //All Packages table
             $(function() {
+
+
                 var data_table = $('#data_table').DataTable({
                     processing: true,
                     serverSide: true,
@@ -85,7 +89,10 @@
                             data: 'type',
                             name: 'type'
                         },
-
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
 
 
                         {
@@ -98,7 +105,11 @@
 
 
                 });
+                var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
+                elems.forEach(function(html) {
+                    var switchery = new Switchery(html);
+                });
                 $(document).on('click', '.delete_button', function(e) {
                     e.preventDefault();
                     var thePath = $(this).data('href');
