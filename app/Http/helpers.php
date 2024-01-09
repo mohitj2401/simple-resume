@@ -3,17 +3,11 @@
 use Illuminate\Support\Facades\File;
 use Spatie\Permission\Models\Permission;
 
-function getCategoriesType(): array
+function getSkillsType(): array
 {
     return [
-        'project' => 'Project',
-        'contract' => 'Contract',
-        'expense' => 'Expense',
-        'invoice' => 'Invoice',
-        'lead' => 'Lead',
-        'ticket' => 'Ticket',
-        'knowledgebase' => 'Knowledgebase',
-        'estimate' => 'Estimate',
+        0 => 'Language',
+        1 => 'Framework',
     ];
 }
 

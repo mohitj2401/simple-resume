@@ -419,7 +419,7 @@
             @include('admin.layouts.sidebar')
             {{ $slot }}
             <!-- footer start-->
-            <footer class="footer">
+            {{-- <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
                         <div
@@ -433,7 +433,7 @@
                         </div>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
         </div>
     </div>
     <!-- latest jquery-->
