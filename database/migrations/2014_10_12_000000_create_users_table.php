@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('stackoverflow')->nullable();
             $table->string('github')->nullable();
             $table->string('portfolio')->nullable();
-            $table->integer('number')->nullable();
+            $table->string('number')->nullable();
             $table->text('about')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
