@@ -81,14 +81,14 @@
                         <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                             <a class="sidebar-link sidebar-title active " href="javascript:void(0)">
                                 <svg class="stroke-icon">
-                                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-editors') }}"></use>
+                                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-layout') }}"></use>
                                 </svg>
                                 <svg class="fill-icon">
-                                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-editors') }}"></use>
+                                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-layout') }}"></use>
                                 </svg><span>Resume Management</span></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="{{ route('skills.index') }}" class=" ">Skills</a></li>
-                                <li><a href="{{ route('permissions.index') }}" class="">Permission</a></li>
+                                <li><a href="{{ route('projects.index') }}" class="">Project</a></li>
 
                             </ul>
                         </li>

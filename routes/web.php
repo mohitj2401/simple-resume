@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminDashboard;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     // Route::resource('categories', CategoryController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('skills', SkillController::class);
+    Route::resource('projects', ProjectController::class);
     Route::resource('permissions', PermissionController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
