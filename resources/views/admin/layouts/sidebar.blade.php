@@ -87,8 +87,11 @@
                                     <use href="{{ asset('assets/svg/icon-sprite.svg#fill-layout') }}"></use>
                                 </svg><span>Resume Management</span></a>
                             <ul class="sidebar-submenu">
+                                <li><a href="{{ route('profile.edit') }}" class=" ">Profile</a></li>
                                 <li><a href="{{ route('skills.index') }}" class=" ">Skills</a></li>
                                 <li><a href="{{ route('projects.index') }}" class="">Project</a></li>
+                                <li><a href="{{ route('experiences.index') }}" class=" ">Experience</a></li>
+
 
                             </ul>
                         </li>

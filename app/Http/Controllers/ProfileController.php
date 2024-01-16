@@ -16,25 +16,44 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $data['page'] = "Profile";
+        $data['title'] = "Profile";
+        $data['pageTitle'] = "Profile";
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $request->user(), 'page' => $data['page'], 'title' => $data['title'], 'pageTitle' => $data['pageTitle']
         ]);
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request): array
     {
-        $request->user()->fill($request->validated());
+        try {
+            $request->user()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+
+
+            $request->user()->save();
+            if (request()->ajax()) {
+                $output = [
+                    'success' => true,
+                    'data' => '',
+
+                    'msg' => 'Profile Update Successully'
+                ];
+            } else {
+                $output = redirect()->back()->with(['msg' => 'Experience Update Successully', 'success' => true]);
+            }
+        } catch (\Exception $e) {
+            \Log::emergency("File:" . $e->getFile() . "Line:" . $e->getLine() . "Message:" . $e->getMessage());
+            $output = [
+                'success' => false,
+                'msg' => 'Something Went Wrong.'
+            ];
         }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return $output;
+        // return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**

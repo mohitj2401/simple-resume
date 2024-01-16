@@ -19,7 +19,7 @@ class EducationSeeder extends Seeder
                 'education_name' => "B.Tech Computer Science",
                 'institute_name' => 'Teerthanker Mahaveer University , Moradabad',
                 'start_date' => '01-08-2017',
-
+                'user_id' => 1,
                 'end_date' => '01-07-2021',
 
             ],
@@ -28,6 +28,7 @@ class EducationSeeder extends Seeder
                 'education_name' => "XII",
                 'institute_name' => 'Kids Corner Happy Sr. Sec. School',
                 'start_date' => '01-04-2015',
+                'user_id' => 1,
 
                 'end_date' => '01-03-2016',
 
@@ -37,6 +38,7 @@ class EducationSeeder extends Seeder
                 'education_name' => "X",
                 'institute_name' => 'Kids Corner Happy Sr. Sec. School',
                 'start_date' => '01-04-2013',
+                'user_id' => 1,
 
                 'end_date' => '01-03-2014',
 

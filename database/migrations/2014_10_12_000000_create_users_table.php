@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('portfolio')->nullable();
             $table->string('number')->nullable();
             $table->text('about')->nullable();
+            $table->text('certification')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

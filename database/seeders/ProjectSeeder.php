@@ -16,6 +16,8 @@ class ProjectSeeder extends Seeder
         Project::truncate();
         $datas = [
             [
+                'user_id' => 1,
+
                 'title' => 'IRCTC Verification Automation',
                 'skill_used' => json_encode([8]),
                 'start_date' => '10-10-2023',
@@ -29,6 +31,8 @@ class ProjectSeeder extends Seeder
                 'description' => "The project streamlines the IRCTC user verification process by automating login, handling captcha using Tesseract OCR, and utilizing external APIs for pending verifications. It enhances efficiency and reduces manual intervention in the verification workflow."
             ],
             [
+                'user_id' => 1,
+
                 'title' => 'Breast Cancer Detection',
                 'skill_used' => json_encode([8]),
                 'start_date' => '01-04-2023',

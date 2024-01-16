@@ -15,22 +15,23 @@ class SkillSeeder extends Seeder
     {
         Skill::truncate();
         $datas = [
-            ['name' => 'Laravel', 'is_major' => 0, 'type' => 1],
-            ['name' => 'Javascript', 'is_major' => 0, 'type' => 0],
-            ['name' => 'HTML', 'is_major' => 0, 'type' => 0],
-            ['name' => 'CSS', 'is_major' => 0, 'type' => 0],
-            ['name' => 'PHP', 'is_major' => 0, 'type' => 0],
-            ['name' => 'GIT', 'is_major' => 0, 'type' => 0],
-            ['name' => 'Flutter', 'is_major' => 0, 'type' => 1],
-            ['name' => 'Python', 'is_major' => 0, 'type' => 0],
-            ['name' => 'Spring Boot', 'is_major' => 0, 'type' => 1],
-            ['name' => 'Java', 'is_major' => 0, 'type' => 0],
-            ['name' => 'Ajax', 'is_major' => 0, 'type' => 0],
-            ['name' => 'MySQL', 'is_major' => 0, 'type' => 0],
-            ['name' => 'Angular', 'is_major' => 0, 'type' => 1],
-            ['name' => 'Frontend', 'is_major' => 1, 'type' => 2],
-            ['name' => 'Beckend', 'is_major' => 1, 'type' => 2],
-            ['name' => 'Full-stack', 'is_major' => 1, 'type' => 2],
+
+            ['name' => 'Laravel', 'is_major' => 0, 'type' => 1, 'user_id' => 1,],
+            ['name' => 'Javascript', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'HTML', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'CSS', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'PHP', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'GIT', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'Flutter', 'is_major' => 0, 'type' => 1, 'user_id' => 1],
+            ['name' => 'Python', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'Spring Boot', 'is_major' => 0, 'type' => 1, 'user_id' => 1],
+            ['name' => 'Java', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'Ajax', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'MySQL', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
+            ['name' => 'Angular', 'is_major' => 0, 'type' => 1, 'user_id' => 1],
+            ['name' => 'Frontend', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
+            ['name' => 'Beckend', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
+            ['name' => 'Full-stack', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
 
         ];
         Skill::insert($datas);

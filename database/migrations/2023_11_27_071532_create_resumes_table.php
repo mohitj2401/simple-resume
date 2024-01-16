@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('position_id');
-            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
-            $table->index('position_id');
+
             $table->json('skill_ids');
             $table->json('education_ids');
             $table->json('experience_ids');
