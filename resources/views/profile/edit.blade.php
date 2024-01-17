@@ -63,7 +63,16 @@
 
 
                             </div>
+                            <div class="col-6">
+                                <label class="form-label" for="validationCustom01">Github Url</label>
+                                <input class="form-control" name="github" id="validationCustom01"
+                                    value="{{ $user->github ?? '' }}" type="url" required="">
 
+                                <div class="invalid-feedback" id="github_error">Please enter valid url </div>
+
+
+
+                            </div>
                             <div class="col-6">
                                 <label class="form-label" for="validationCustom01">Number</label>
                                 <input class="form-control" name="number" id="validationCustom01"
@@ -77,11 +86,10 @@
 
                             <div class="col-12">
 
-                                <label class="form-label" for="validationTextarea">Awards and Certificates</label>
+                                <label class="form-label" for="validationTextarea">Awards and Certificates (In Order
+                                    Format)</label>
                                 {!! Form::textarea('certification', $user->certification ?? '', [
                                     'class' => 'form-control',
-                                
-                                    'required',
                                 ]) !!}
 
 

@@ -24,7 +24,8 @@ class User extends Authenticatable
         'password',
         'linkdin',
         'number',
-        'certification'
+        'certification',
+        'github'
     ];
 
     /**

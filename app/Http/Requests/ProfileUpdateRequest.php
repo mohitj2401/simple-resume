@@ -19,8 +19,9 @@ class ProfileUpdateRequest extends FormRequest
             // 'name' => ['required', 'string', 'max:255'],
             // 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'linkdin' => 'url',
+            'github' => 'url',
             'number' => 'digits:10',
-            'certification' => 'string'
+            'certification' => 'bail'
         ];
     }
 }
