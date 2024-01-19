@@ -9,8 +9,10 @@ use App\Http\Controllers\Admin\ResumeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Resume;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
+use Spatie\Browsershot\Browsershot;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,6 @@ Route::get('/sdashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin.dashboard');
-    // Route::resource('categories', CategoryController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('skills', SkillController::class);
     Route::resource('projects', ProjectController::class);
@@ -45,7 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', function () {
-        $pdf = Pdf::loadView('resume');
+        $data['resume'] = Resume::find(1);
+        $pdf = Pdf::loadView('resume', $data);
         return $pdf->stream();
         return view('resume');
     });

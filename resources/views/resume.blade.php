@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ auth()->user()->name }}</title>
+    <title>
+        @if ($resume->id == 1)
+            Mohit Jain
+        @else
+            {{ auth()->user()->name }}
+        @endif
+    </title>
     <style>
         hr {
             border: 0.3px solid black;
@@ -95,13 +101,24 @@
 <body>
     <div>
         <p class="username">
-            <span style="color:#1c033c;">{{ auth()->user()->name }}</span>
+            @if ($resume->id == 1)
+                <span style="color:#1c033c;">Mohit Jain</span>
+            @else
+                <span style="color:#1c033c;">{{ auth()->user()->name }}</span>
+            @endif
+
         </p>
         <p
             style="margin-top:11.75pt; margin-bottom:0pt; text-align:center; line-height:normal; widows:0; orphans:0; font-size:9.5pt;">
-            <span style="color:#371e77;">{{ auth()->user()->email }} </span>
-            |
-            <span style="color:#371e77;"> {{ auth()->user()->number }} </span>
+            @if ($resume->id == 1)
+                <span style="color:#371e77;"> xyz@example.com </span>
+                |
+                <span style="color:#371e77;"> 12345678 </span>
+            @else
+                <span style="color:#371e77;">{{ auth()->user()->email }} </span>
+                |
+                <span style="color:#371e77;"> {{ auth()->user()->number }} </span>
+            @endif
         </p>
         <p style="margin-top:0.3pt; margin-bottom:0pt; text-align:center; line-height:normal; widows:0; orphans:0;">
             <a href="{{ auth()->user()->github }}" style="text-decoration:none;">
@@ -175,9 +192,8 @@
                 <div class="float-clear"></div>
 
                 <span style="color:#371e77;" class="float-left text-md">{{ $item->institute_name }}</span>
-
+                <div class="float-clear"></div>
                 @if (!is_null($item->description))
-                    <div class="float-clear"></div>
                     <span style="color:#1c033c;" class="description-text ">Relevant Coursework:
                         {{ $item->description }}
                     </span>
@@ -185,7 +201,7 @@
             </div>
         @endforeach
         <br>
-        <br>
+
         <p class="heading-title">
             <span style="color:#1c033c;">Project Work</span>
         </p>

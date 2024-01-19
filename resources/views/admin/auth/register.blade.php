@@ -1,17 +1,19 @@
 <x-admin.guest-layout>
-    <x-slot name="title">
-        {{ $title }}
-    </x-slot>
     <div class="row m-0">
         <div class="col-12 p-0">
             <div class="login-card login-dark">
                 <div>
 
                     <div class="login-main">
-                        <form class="theme-form" method="POST" action="{{ route('login') }}">
+                        <form class="theme-form" method="POST" action="{{ route('register') }}">
                             @csrf
-                            <h4>Sign in to account</h4>
-                            <p>Enter your email & password to login</p>
+                            <h4>Register</h4>
+
+                            <div class="form-group">
+                                <label class="col-form-label">Name</label>
+                                <input class="form-control" type="text" required="" name="name" placeholder="">
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            </div>
                             <div class="form-group">
                                 <label class="col-form-label">Email Address</label>
                                 <input class="form-control" type="email" required="" name="email"
@@ -27,18 +29,26 @@
                                 </div>
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
-
+                            <div class="form-group">
+                                <label class="col-form-label">Confirm Password</label>
+                                <div class="form-input position-relative">
+                                    <input class="form-control" type="password" name="password_confirmation"
+                                        required="" placeholder="*********">
+                                    <div class="show-hide"><span class="show"> </span></div>
+                                </div>
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            </div>
                             <div class="form-group mb-0">
-                                <div class="checkbox p-0">
+                                {{-- <div class="checkbox p-0">
                                     <input id="checkbox1" type="checkbox">
                                     <label class="text-muted" for="checkbox1">Remember password</label>
 
                                 </div>
                                 @if (Route::has('password.request'))
                                     <a class="link" href="forget-password.html">Forgot password?</a>
-                                @endif
+                                @endif --}}
                                 <div class="text-end mt-3">
-                                    <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Sign Up</button>
                                 </div>
                             </div>
                             {{-- <h6 class="text-muted mt-4 or">Or Sign in with</h6>

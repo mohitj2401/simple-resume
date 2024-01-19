@@ -9,7 +9,7 @@
         <div class="card height-equal">
             <div class="card-body">
                 {!! Form::open([
-                    'url' => action('App\Http\Controllers\Admin\ResumeController@update', [$project->id]),
+                    'url' => action('App\Http\Controllers\Admin\ResumeController@update', [$resume->id]),
                     'id' => 'ajax_form',
                     'method' => 'PUT',
                     'enctype' => 'multipart/form-data',

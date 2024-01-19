@@ -31,10 +31,13 @@ class SkillController extends Controller
 
                 ->addColumn('action', function ($row) {
                     $action = '';
-                    $action = '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@edit', [$row->id]) . '" class="btn btn-sm btn-primary btn-modal"  data-container="#ajax_modal"><i class="glyphicon glyphicon-edit"></i>' . __("Edit") . '</button>&nbsp;';
+                    if (auth()->user()->getRoleNames() == "Admin") {
+                        $action = '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@edit', [$row->id]) . '" class="btn btn-sm btn-primary btn-modal"  data-container="#ajax_modal"><i class="glyphicon glyphicon-edit"></i>' . __("Edit") . '</button>&nbsp;';
 
-                    $action = $action .  '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@destroy', [$row->id]) . '" class="btn btn-sm btn-danger delete_button" ><i class="glyphicon glyphicon-trash"></i>' . __("Delete") . '</button>';
-                    return $action;
+                        $action = $action .  '<button data-href="' . action('App\Http\Controllers\Admin\SkillController@destroy', [$row->id]) . '" class="btn btn-sm btn-danger delete_button" ><i class="glyphicon glyphicon-trash"></i>' . __("Delete") . '</button>';
+                        return $action;
+                    }
+                    return "Not Applicable";
                 })
 
                 ->editColumn('type', function ($row) {

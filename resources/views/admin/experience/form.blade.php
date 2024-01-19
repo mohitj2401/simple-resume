@@ -61,14 +61,14 @@
 
 
 
-    <div class="invalid-feedback" id="active_error">Please select valid Role Permission </div>
+    <div class="invalid-feedback" id="description_error">Please select valid Role Permission </div>
 
 </div>
 
 <div class="col-12">
 
     <label class="form-label" for="validationTextarea">Is Present</label>
-    {!! Form::select('is_present', [1 => 'Yes', 0 => 'No'], $experience->is_present ?? null, [
+    {!! Form::select('is_present', [1 => 'Yes', 0 => 'No'], $experience->is_present ?? 0, [
         'class' => 'form-control',
     
         'required',

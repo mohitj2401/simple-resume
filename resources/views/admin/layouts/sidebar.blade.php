@@ -77,7 +77,7 @@
                         </li>
                     @endif
 
-                    @if (checkPermission('Role Management'))
+                    @if (checkPermission('Resume Management'))
                         <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                             <a class="sidebar-link sidebar-title active " href="javascript:void(0)">
                                 <svg class="stroke-icon">
@@ -91,6 +91,7 @@
                                 <li><a href="{{ route('skills.index') }}" class=" ">Skills</a></li>
                                 <li><a href="{{ route('projects.index') }}" class="">Project</a></li>
                                 <li><a href="{{ route('experiences.index') }}" class=" ">Experience</a></li>
+                                <li><a href="{{ route('education.index') }}" class=" ">Education</a></li>
                                 <li><a href="{{ route('resumes.index') }}" class=" ">Resume</a></li>
 
 

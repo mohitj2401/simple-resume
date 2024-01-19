@@ -13,7 +13,7 @@ class ExperienceRepository
 
     function all(): Object
     {
-        return Experience::orderBy('start_date', 'desc')->get();
+        return Experience::where('user_id', auth()->user()->id)->orderBy('start_date', 'desc')->get();
     }
 
 

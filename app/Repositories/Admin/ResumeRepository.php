@@ -12,7 +12,7 @@ class ResumeRepository
 
     function all(): Object
     {
-        return Resume::get();
+        return Resume::where('user_id', auth()->user()->id)->get();
     }
 
 

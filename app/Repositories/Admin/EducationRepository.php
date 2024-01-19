@@ -13,7 +13,7 @@ class EducationRepository
 
     function all(): Object
     {
-        return Education::get();
+        return Education::where('user_id', auth()->user()->id)->get();
     }
 
 
@@ -24,7 +24,7 @@ class EducationRepository
                 'education_name', 'institute_name', 'start_date', 'is_present', 'percentage',  'description', 'end_date'
             ]);
 
-
+            $input['user_id'] = auth()->user()->id;
             $package = Education::create($input);
 
             if (request()->ajax()) {
@@ -81,7 +81,7 @@ class EducationRepository
             ]);
 
 
-
+            $input['user_id'] = auth()->user()->id;
 
             $education->update($input);
 

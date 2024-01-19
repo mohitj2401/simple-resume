@@ -69,8 +69,6 @@ class ExperienceController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $data['title'] = 'Add Experience';
-        $data['skills'] = Skill::get()->pluck('name', 'id');
-        $data['selected'] = null;
         return  view('admin.experience.create', $data);
     }
 
@@ -121,8 +119,7 @@ class ExperienceController extends Controller
         }
         $data['title'] = 'Edit Experience';
         $data['experience'] = $experience;
-        $data['skills'] = Skill::get()->pluck('name', 'id');
-        $data['selected'] = json_decode($experience->skill_used);
+
 
         return view('admin.experience.edit', $data);
     }

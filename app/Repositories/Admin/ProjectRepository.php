@@ -12,7 +12,7 @@ class ProjectRepository
 
     function all(): Object
     {
-        return Project::get();
+        return Project::where('user_id', auth()->user()->id)->get();
     }
 
 
@@ -25,6 +25,7 @@ class ProjectRepository
 
 
             $input['skill_used'] = json_encode(request()->skills);
+            $input['user_id'] = auth()->user()->id;
 
             $package = Project::create($input);
 
@@ -82,6 +83,7 @@ class ProjectRepository
 
 
             $input['skill_used'] = json_encode(request()->skills);
+            $input['user_id'] = auth()->user()->id;
             $project->update($input);
 
             if (request()->ajax()) {

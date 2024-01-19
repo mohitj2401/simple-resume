@@ -75,13 +75,13 @@ class ResumeController extends Controller
         $data['skills'] = Skill::get()->pluck('name', 'id');
         $data['skill_selected'] = null;
 
-        $data['educations'] = Education::get()->pluck('education_name', 'id');
+        $data['educations'] = Education::where('user_id', auth()->user()->id)->get()->pluck('education_name', 'id');
         $data['education_selected'] = null;
 
-        $data['experiences'] = Experience::get()->pluck('company_name', 'id');
+        $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('company_name', 'id');
         $data['experience_selected'] = null;
 
-        $data['projects'] = Project::get()->pluck('title', 'id');
+        $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('title', 'id');
         $data['project_selected'] = null;
 
         return  view('admin.resume.create', $data);
@@ -136,9 +136,21 @@ class ResumeController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $data['title'] = 'Edit Project';
-        $data['project'] = $resume;
+        $data['resume'] = $resume;
         $data['skills'] = Skill::get()->pluck('name', 'id');
-        $data['selected'] = json_decode($resume->skill_used);
+        $data['skill_selected'] = json_decode($resume->skill_ids);
+
+
+
+
+        $data['educations'] = Education::where('user_id', auth()->user()->id)->get()->pluck('education_name', 'id');
+        $data['education_selected'] =  json_decode($resume->education_ids);
+
+        $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('company_name', 'id');
+        $data['experience_selected'] =  json_decode($resume->experience_ids);
+
+        $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('title', 'id');
+        $data['project_selected'] =  json_decode($resume->project_ids);
 
         return view('admin.resume.edit', $data);
     }
@@ -154,12 +166,13 @@ class ResumeController extends Controller
         }
         $request->validate([
 
-            'title' => 'required|unique:projects,title,' . $resume->id,
+            'title' => 'required|unique:projects,title',
 
             'skills.*' => 'required|exists:skills,id',
-            'description' => 'required',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'projects.*' => 'required|exists:projects,id',
+            'experiences.*' => 'required|exists:experiences,id',
+            'education.*' => 'required|exists:education,id',
+
 
         ]);
         return  $this->repository->update($resume);
@@ -186,9 +199,13 @@ class ResumeController extends Controller
             toastr()->error('Invailed User Right', 'Oops');
             return redirect()->route('admin.dashboard');
         }
+        if ($resume->user_id != auth()->user()->id) {
+            toastr()->error('Invailed User Right', 'Oops');
+            return redirect()->route('admin.dashboard');
+        }
         $data['resume'] = $resume;
         $pdf = Pdf::loadView('resume', $data);
-        return $pdf->stream();
+        return $pdf->download();
         return  $this->repository->delete($resume);
     }
 }

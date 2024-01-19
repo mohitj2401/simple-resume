@@ -68,7 +68,7 @@
 <div class="col-12">
 
     <label class="form-label" for="validationTextarea">Is Present</label>
-    {!! Form::select('is_present', [1 => 'Yes', 0 => 'No'], $education->is_present ?? null, [
+    {!! Form::select('is_present', [1 => 'Yes', 0 => 'No'], $education->is_present ?? 0, [
         'class' => 'form-control',
     
         'required',

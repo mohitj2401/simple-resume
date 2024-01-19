@@ -141,7 +141,7 @@ class ProjectController extends Controller
         }
         $request->validate([
 
-            'title' => 'required|unique:projects,title,' . $project->id,
+            'title' => 'required',
 
             'skills.*' => 'required|exists:skills,id',
             'description' => 'required',
