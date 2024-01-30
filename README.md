@@ -3,7 +3,7 @@
 
 ## :dart: About ##
 
-This website exemplifies the seamless integration of the OpenWeatherAPI to provide both current and future weather forecasts. Additionally, it incorporates PlaceKit for efficient location search functionality. The entire application is developed using the Laravel framework, showcasing its versatility and robust features. Users can explore accurate weather information for their desired locations through a user-friendly interface, combining the power of OpenWeatherAPI for weather data and PlaceKit for streamlined location search.
+Simple-Resume is a user-friendly and efficient resume-building platform crafted using Laravel, designed to empower individuals to effortlessly create professional resumes. With a seamless admin-like panel, users can add details about their skills, projects, experiences, education, and personal profiles. The platform streamlines the resume creation process, allowing users to generate and download their resumes in PDF format with ease.
 
 
 ## :rocket: Technologies ##
