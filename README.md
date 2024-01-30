@@ -26,7 +26,7 @@ Before starting checkout sample :checkered_flag:, [Resume](sample_resume.pdf)
  git clone https://github.com/mohitj2401/simple-resume
 
 # Access
-cd weather-app
+cd simple-resume
 
 # Install dependencies
 composer install
