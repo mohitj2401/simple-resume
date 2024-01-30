@@ -213,7 +213,11 @@
             @foreach ($resume->projects() as $item)
                 <li>
 
-                    <span style="font-weight: bold">{{ $item->title }} ({{ $item->duration }}) :
+                    <span style="font-weight: bold">{{ $item->title }}
+                        @if ($resume->show_duration == 1)
+                            ({{ $item->duration }})
+                        @endif
+                        :
                     </span>{{ $item->description }}
 
                 </li>

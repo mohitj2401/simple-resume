@@ -38,7 +38,7 @@
                                             <th style="width: 30px">Id</th>
                                             <th>Name</th>
                                             <th>Type</th>
-                                            <th>Status</th>
+
 
 
 
@@ -89,10 +89,7 @@
                             data: 'type',
                             name: 'type'
                         },
-                        {
-                            data: 'status',
-                            name: 'status'
-                        },
+
 
 
                         {

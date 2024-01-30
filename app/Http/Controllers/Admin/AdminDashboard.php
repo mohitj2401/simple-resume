@@ -21,7 +21,7 @@ class AdminDashboard extends Controller
                 ->addColumn('action', function ($row) {
                     $action = '';
 
-                    $action = $action .  '<a href="' . action('App\Http\Controllers\Admin\ResumeController@download', [$row->id]) . '" class="btn btn-sm btn-secondary"  data-container="#ajax_modal"><i class="fa fa-download"></i></a>&nbsp; &nbsp;';
+                    $action = $action .  '<a href="' . action('App\Http\Controllers\Admin\ResumeController@download', [$row->id]) . '" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-download"></i></a>&nbsp; &nbsp;';
 
                     return $action;
                 })

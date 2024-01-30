@@ -22,7 +22,7 @@ class SkillRepository
                 'name', 'type', 'status'
             ]);
 
-
+            $input['user_id'] = auth()->user()->id;
 
             $package = Skill::create($input);
 
@@ -77,7 +77,7 @@ class SkillRepository
         try {
             $input = request()->all();
 
-
+            $input['user_id'] = auth()->user()->id;
 
             $skill->update($input);
 

@@ -43,9 +43,7 @@ class SkillController extends Controller
                 ->editColumn('type', function ($row) {
                     return $row->type === 1 ? "Framework" : "Language";
                 })
-                ->editColumn('status', function ($row) {
-                    return $row->active === 1 ? "Active" : "Inactive";
-                })
+
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -87,9 +85,6 @@ class SkillController extends Controller
         $request->validate([
 
             'name' => 'required|unique:skills,name',
-
-            'permissions.*' => 'required|exists:permissions,name'
-
 
         ]);
         return  $this->repository->store();
@@ -139,9 +134,6 @@ class SkillController extends Controller
         $request->validate([
 
             'name' => 'required|unique:skills,name,' . $skill->id,
-
-            'permissions.*' => 'required|exists:permissions,name'
-
 
         ]);
         return  $this->repository->update($skill);

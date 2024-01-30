@@ -30,11 +30,11 @@ class RoleSeeder extends Seeder
         ];
         Role::insert($datas);
 
-        $admin_role = Role::where('name', 'Admin')->get();
+        $admin_role = Role::where('name', 'Admin')->first();
 
         $admin_role->syncPermissions(['Role Management', 'Resume Management']);
 
-        $user_role = Role::where('name', 'User')->get();
+        $user_role = Role::where('name', 'User')->first();
 
         $user_role->syncPermissions(['Resume Management']);
         # code...
