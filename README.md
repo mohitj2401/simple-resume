@@ -16,7 +16,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Sample Resume ##
 
-Before starting :checkered_flag:, [Resume](https://github.com/mohitj2401/simple-resume/sample_resume.pdf)
+Before starting :checkered_flag:, [Resume](sample_resume.pdf)
 
 
 ## :checkered_flag: Starting ##
