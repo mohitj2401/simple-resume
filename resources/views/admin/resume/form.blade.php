@@ -20,7 +20,7 @@
 
 
 
-    <div class="invalid-feedback" id="skill_used_error">Please select valid Skill </div>
+    <div class="invalid-feedback" id="skills_error">Please select valid Skill </div>
 
 </div>
 
@@ -69,6 +69,23 @@
     <div class="invalid-feedback" id="experience_error">Please select valid experience </div>
 
 </div>
+
+
+<div class="col-12">
+
+    <label class="form-label" for="validationTextarea">Show Project Durations</label>
+    {!! Form::select('show_duration', [1 => 'Yes', 0 => 'No'], $resume->show_duration ?? 1, [
+        'class' => 'form-control',
+    
+        'required',
+    ]) !!}
+
+
+
+    <div class="invalid-feedback" id="show_duration_error">Please select valid Role Permission </div>
+
+</div>
+
 <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>
 </div>

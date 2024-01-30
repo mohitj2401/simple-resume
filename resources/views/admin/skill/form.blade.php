@@ -24,20 +24,6 @@
 
 </div>
 
-<div class="col-12">
-
-    <label class="form-label" for="validationTextarea">Status</label>
-    {!! Form::select('active', [0 => 'Inactive', 1 => 'Active'], $skill->status ?? null, [
-        'class' => 'form-control js-example-basic-multiple',
-    
-        'required',
-    ]) !!}
-
-
-
-    <div class="invalid-feedback" id="active_error">Please select valid Role Permission </div>
-
-</div>
 
 
 

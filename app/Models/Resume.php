@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Resume extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'skill_ids', 'project_ids', 'experience_ids', 'education_ids', 'user_id'];
+    protected $fillable = ['title', 'skill_ids', 'project_ids', 'experience_ids', 'education_ids', 'user_id', 'show_duration'];
 
     function projects()
     {
-        return  Project::whereIn('id', json_decode($this->project_ids))->get();
+        return  Project::whereIn('id', json_decode($this->project_ids))->orderBy("end_date", "desc")->get();
     }
 
     function skills()
