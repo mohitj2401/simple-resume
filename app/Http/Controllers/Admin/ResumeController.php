@@ -34,13 +34,8 @@ class ResumeController extends Controller
 
                 ->addColumn('action', function ($row) {
                     $action = '';
-<<<<<<< HEAD
                     $action = '<button data-href="' . action('App\Http\Controllers\Admin\ResumeController@edit', [$row->id]) . '" class="btn btn-sm btn-primary btn-modal my-1"  data-container="#ajax_modal"><i class="glyphicon glyphicon-edit"></i>' . __("Edit") . '</button>&nbsp;';
                     $action = $action .  '<a href="' . action('App\Http\Controllers\Admin\ResumeController@download', [$row->id]) . '" class="btn btn-sm btn-secondary  my-1" target="_blank" ><i class="fa fa-download"></i></a>';
-=======
-                    $action = '<button data-href="' . action('App\Http\Controllers\Admin\ResumeController@edit', [$row->id]) . '" class="btn btn-sm btn-primary btn-modal"  data-container="#ajax_modal"><i class="glyphicon glyphicon-edit"></i>' . __("Edit") . '</button>&nbsp;';
-                    $action = $action .  '<a href="' . action('App\Http\Controllers\Admin\ResumeController@download', [$row->id]) . '" class="btn btn-sm btn-secondary" target="_blank" ><i class="fa fa-download"></i></a>&nbsp; &nbsp;';
->>>>>>> 05aef791855156e794444465974d12e8ed19680f
                     $action = $action .  '<button data-href="' . action('App\Http\Controllers\Admin\ResumeController@destroy', [$row->id]) . '" class="btn btn-sm btn-danger delete_button" ><i class="glyphicon glyphicon-trash"></i>' . __("Delete") . '</button>';
                     return $action;
                 })
@@ -212,9 +207,5 @@ class ResumeController extends Controller
         $data['resume'] = $resume;
         $pdf = Pdf::loadView('resume', $data);
         return $pdf->stream($resume->title  .  ' resume.pdf');
-<<<<<<< HEAD
-=======
-        return  $this->repository->delete($resume);
->>>>>>> 05aef791855156e794444465974d12e8ed19680f
     }
 }
