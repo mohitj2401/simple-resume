@@ -25,6 +25,7 @@ class ProjectRepository
 
 
             $input['skill_used'] = json_encode(request()->skills);
+            $input['pointers'] = json_encode(request()->pointers);
             $input['user_id'] = auth()->user()->id;
 
             $package = Project::create($input);
@@ -81,7 +82,7 @@ class ProjectRepository
             $input = request()->all();
 
 
-
+            $input['pointers'] = json_encode(request()->pointers);
             $input['skill_used'] = json_encode(request()->skills);
             $input['user_id'] = auth()->user()->id;
             $project->update($input);

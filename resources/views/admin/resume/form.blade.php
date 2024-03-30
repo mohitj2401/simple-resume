@@ -25,6 +25,7 @@
 </div>
 
 
+
 <div class="col-12">
 
     <label class="form-label" for="validationTextarea">Project</label>
@@ -70,6 +71,25 @@
 
 </div>
 
+<div class="col-12">
+
+    <label class="form-label" for="validationTextarea">Skill</label>
+    {!! Form::select(
+        'type',
+        ['normal' => 'Default', 'with_pointer' => 'Project with pointer'],
+        $resume->type ?? 'normal',
+        [
+            'class' => 'form-control',
+    
+            'required',
+        ],
+    ) !!}
+
+
+
+    <div class="invalid-feedback" id="type_error">Please select valid Type </div>
+
+</div>
 
 <div class="col-12">
 

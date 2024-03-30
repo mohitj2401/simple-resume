@@ -81,7 +81,7 @@ class ResumeController extends Controller
         $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('company_name', 'id');
         $data['experience_selected'] = null;
 
-        $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('title', 'id');
+        $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('slug_title', 'id');
         $data['project_selected'] = null;
 
         return  view('admin.resume.create', $data);
@@ -105,6 +105,8 @@ class ResumeController extends Controller
             'experiences.*' => 'required|exists:experiences,id',
             'education.*' => 'required|exists:education,id',
             'show_duration' => "required",
+            'type' => 'required',
+            'slug' => 'required',
 
 
         ]);
@@ -150,7 +152,7 @@ class ResumeController extends Controller
         $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('company_name', 'id');
         $data['experience_selected'] =  json_decode($resume->experience_ids);
 
-        $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('title', 'id');
+        $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('slug_title', 'id');
         $data['project_selected'] =  json_decode($resume->project_ids);
 
         return view('admin.resume.edit', $data);
@@ -166,9 +168,10 @@ class ResumeController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $request->validate([
+            'slug' => 'required',
 
             'title' => 'required|unique:projects,title',
-
+            'type' => 'required',
             'skills.*' => 'required|exists:skills,id',
             'projects.*' => 'required|exists:projects,id',
             'experiences.*' => 'required|exists:experiences,id',
@@ -205,7 +208,10 @@ class ResumeController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $data['resume'] = $resume;
-        $pdf = Pdf::loadView('resume', $data);
+        if ($resume->type == "normal")
+            $pdf = Pdf::loadView('resume', $data);
+        if ($resume->type == "with_pointer")
+            $pdf = Pdf::loadView('resume-pointers', $data);
         return $pdf->stream($resume->title  .  ' resume.pdf');
     }
 }

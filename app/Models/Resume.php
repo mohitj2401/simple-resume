@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Resume extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'skill_ids', 'project_ids', 'experience_ids', 'education_ids', 'user_id', 'show_duration'];
+    protected $fillable = ['title', 'skill_ids', 'project_ids', 'experience_ids', 'education_ids', 'user_id', 'show_duration', 'type'];
 
     function projects()
     {

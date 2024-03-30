@@ -20,7 +20,7 @@ class ResumeRepository
     {
         try {
             $input = request()->only([
-                'title', 'show_duration'
+                'title', 'show_duration', 'type'
             ]);
 
 
@@ -83,7 +83,7 @@ class ResumeRepository
     {
         try {
             $input = request()->only([
-                'title', 'show_duration'
+                'title', 'show_duration', 'type'
             ]);
 
 

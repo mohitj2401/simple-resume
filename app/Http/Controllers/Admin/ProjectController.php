@@ -43,10 +43,17 @@ class ProjectController extends Controller
                 ->editColumn('type', function ($row) {
                     return $row->type === 1 ? "Professional" : "Personal";
                 })
-                ->editColumn('status', function ($row) {
-                    return $row->active === 1 ? "Active" : "Inactive";
+                ->editColumn('pointers', function ($row) {
+                    if (is_null($row->pointers)) {
+                        return '';
+                    }
+                    $data = '<ul>';
+                    foreach (json_decode($row->pointers) as $value) {
+                        $data = $data . '<li>' . $value . '</li>';
+                    }
+                    return $data . '</ul>';
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'pointers'])
                 ->make(true);
         }
         if (!checkPermission('Resume Management')) {
@@ -162,5 +169,19 @@ class ProjectController extends Controller
             return redirect()->route('admin.dashboard');
         }
         return  $this->repository->delete($project);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function pointers()
+    {
+        $count = request()->count;
+        $html = view('admin.project.pointers', compact('count'))->render();
+        return [
+            "success" => true,
+            "html" => $html
+        ];
     }
 }

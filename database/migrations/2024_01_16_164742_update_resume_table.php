@@ -20,6 +20,7 @@ return new class extends Migration
             $table->json('education_ids');
             $table->json('experience_ids');
             $table->json('project_ids');
+            $table->string('type')->default('normal');
             $table->timestamps();
         });
     }

@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Resume;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Spatie\Browsershot\Browsershot;
 
@@ -27,15 +29,12 @@ use Spatie\Browsershot\Browsershot;
 
 
 
-Route::get('/sdashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin.dashboard');
     Route::resource('roles', RoleController::class);
     Route::resource('skills', SkillController::class);
     Route::resource('projects', ProjectController::class);
+    Route::get('getpoint', [ProjectController::class, 'pointers'])->name('getpointer');
     Route::resource('permissions', PermissionController::class);
     Route::resource('experiences', ExperienceController::class);
     Route::resource('education', EducationController::class);

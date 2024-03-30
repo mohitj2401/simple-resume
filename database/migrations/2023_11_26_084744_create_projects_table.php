@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('project_link')->nullable();
             $table->text('pointers')->nullable();
             $table->text('description')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@ class SkillSeeder extends Seeder
             ['name' => 'MySQL', 'is_major' => 0, 'type' => 0, 'user_id' => 1],
             ['name' => 'Angular', 'is_major' => 0, 'type' => 1, 'user_id' => 1],
             ['name' => 'Frontend', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
-            ['name' => 'Beckend', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
+            ['name' => 'Backend', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
             ['name' => 'Full-stack', 'is_major' => 1, 'type' => 2, 'user_id' => 1],
 
         ];

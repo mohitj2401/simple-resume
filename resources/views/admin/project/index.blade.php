@@ -38,7 +38,7 @@
                                             <th style="width: 30px">Id</th>
                                             <th>Name</th>
                                             <th>Type</th>
-                                            <th>Status</th>
+                                            <th>Pointers</th>
 
 
 
@@ -71,6 +71,7 @@
             $(function() {
 
 
+
                 var data_table = $('#data_table').DataTable({
                     processing: true,
                     serverSide: true,
@@ -90,8 +91,8 @@
                             name: 'type'
                         },
                         {
-                            data: 'description',
-                            name: 'description'
+                            data: 'pointers',
+                            name: 'pointers'
                         },
 
 
@@ -240,7 +241,32 @@
                         },
                     });
                 });
+                $(document).on('click', '#add_pointer', function(e) {
+                    e.preventDefault();
+                    var count = $('#point_counter').val();
 
+                    $.ajax({
+                        type: "get",
+                        url: "{{ route('getpointer') }}",
+                        data: {
+                            'count': parseInt(count) + 1
+                        },
+
+                        success: function(response) {
+
+                            if (response.success) {
+                                $('#pointers').append(response.html);
+                                $('#point_counter').val(parseInt(count) + 1);
+                            }
+                        }
+                    });
+                });
+                $(document).on('click', '.deletePoint', function(e) {
+                    e.preventDefault();
+                    var count = $(this).attr("data-count");
+                    $("#pointer_" + count).empty();
+
+                });
             });
         </script>
 
