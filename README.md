@@ -1,5 +1,6 @@
 # Simple Resume Build
 
+![](https://github.com/mohitj2401/simple-resume/blob/master/sample-resume.mp4)
 
 ## :dart: About ##
 
