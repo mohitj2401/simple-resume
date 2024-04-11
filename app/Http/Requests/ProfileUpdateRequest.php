@@ -21,7 +21,8 @@ class ProfileUpdateRequest extends FormRequest
             'linkdin' => 'url',
             'github' => 'url',
             'number' => 'digits:10',
-            'certification' => 'bail'
+            'certification' => 'bail',
+            'summary' => 'string'
         ];
     }
 }
