@@ -107,20 +107,29 @@
                 <span style="color:#1c033c;">{{ auth()->user()->name }}</span>
             @endif
 
+
         </p>
         <p
             style="margin-top:11.75pt; margin-bottom:0pt; text-align:center; line-height:normal; widows:0; orphans:0; font-size:9.5pt;">
-            @if ($resume->id == 1)
-                <span style="color:#371e77;"> xyz@example.com </span>
-                |
-                <span style="color:#371e77;"> 12345678 </span>
-            @else
-                <span style="color:#371e77;">{{ auth()->user()->email }} </span>
-                |
-                <span style="color:#371e77;"> {{ auth()->user()->number }} </span>
-            @endif
+
+            <span style="color:#371e77;">{{ auth()->user()->email }} </span>
+            |
+            <span style="color:#371e77;"> {{ auth()->user()->number }} </span>
+            |
+
+            <a href="{{ auth()->user()->github }}" style="text-decoration:none;">
+                <u>
+                    <span
+                        style="font-size:9.5pt; color:#1155cc;">{{ str_replace('https://', '', auth()->user()->github) }}</span>
+                </u>
+            </a>
+            {{-- |
+            <a href="{{ auth()->user()->linkdin }}" style="text-decoration:none;">
+                <u><span
+                        style="font-size:9.5pt; color:#1155cc;">{{ str_replace('https://www.', '', auth()->user()->linkdin) }}</span></u></a>
+   --}}
         </p>
-        <p style="margin-top:0.3pt; margin-bottom:0pt; text-align:center; line-height:normal; widows:0; orphans:0;">
+        {{-- <p style="margin-top:0.3pt; margin-bottom:0pt; text-align:center; line-height:normal; widows:0; orphans:0;">
             <a href="{{ auth()->user()->github }}" style="text-decoration:none;">
                 <u>
                     <span
@@ -131,7 +140,7 @@
             <a href="{{ auth()->user()->linkdin }}" style="text-decoration:none;">
                 <u><span
                         style="font-size:9.5pt; color:#1155cc;">{{ str_replace('https://www.', '', auth()->user()->linkdin) }}</span></u></a>
-        </p>
+        </p> --}}
         <p class="heading-title">
             <span style="color:#110223;">Skills</span>
         </p>

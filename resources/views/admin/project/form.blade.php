@@ -82,7 +82,7 @@
     <label class="form-label" for="validationTextarea">Description</label>
     {!! Form::textarea('description', $project->description ?? '', [
         'class' => 'form-control',
-    
+        'id' => 'project_desc',
         'required',
     ]) !!}
 

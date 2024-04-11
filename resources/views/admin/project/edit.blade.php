@@ -3,6 +3,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">{{ $title }}</h4>
+            <button type="button" class="btn btn-primary ms-3" id="open_ai_form">Gemini AI </button>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
         </div>

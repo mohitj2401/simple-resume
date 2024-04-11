@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('about')->nullable();
             $table->text('certification')->nullable();
             $table->string('photo')->nullable();
+            $table->string('summary')->nullable();
             $table->timestamps();
         });
     }

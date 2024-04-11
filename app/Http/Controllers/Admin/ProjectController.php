@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 
 use App\Repositories\Admin\ProjectRepository;
+use Gemini;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -92,11 +95,12 @@ class ProjectController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $request->validate([
+            'slug' => 'required',
 
-            'title' => 'required|unique:projects,title',
+            'title' => 'required',
 
             'skills.*' => 'required|exists:skills,id',
-            'description' => 'required',
+            // 'description' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
 
@@ -147,11 +151,12 @@ class ProjectController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $request->validate([
+            'slug' => 'required',
 
             'title' => 'required',
 
             'skills.*' => 'required|exists:skills,id',
-            'description' => 'required',
+            // 'description' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
 
@@ -183,5 +188,41 @@ class ProjectController extends Controller
             "success" => true,
             "html" => $html
         ];
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function generatePointers()
+    {
+        if (!env('GEMINI_API_KEY')) {
+            return response([
+                "message" => "Please provide Gemini API key in env."
+            ], 404);
+        }
+
+        if (!checkPermission('Resume Management')) {
+
+            return response([
+                "message" => "Permission Denied"
+            ], 401);
+        }
+
+        if (is_null(request()->description) || !request()->has('description')) {
+
+            return response([
+                "message" => "Please Enter description."
+            ], 404);
+        }
+        // return  $this->repository->generatePointers();
+
+        $client = Gemini::client(env('GEMINI_API_KEY'));
+
+        $result = $client->geminiPro()->generateContent(request()->description);
+
+        return response([
+            "message" => "Pointer Generated",
+            "output" => $result->text(),
+        ], 200);
     }
 }

@@ -58,6 +58,7 @@
     </div>
 
     <div class="modal fade" id="ajax_modal" tabindex="-1" role="dialog"></div>
+
     <div class="modal fade" id="ajax_modal1" tabindex="-1" role="dialog"></div>
 
     <x-slot name="customJs">
@@ -267,6 +268,8 @@
                     $("#pointer_" + count).empty();
 
                 });
+
+
             });
         </script>
 

@@ -78,7 +78,7 @@ class ResumeController extends Controller
         $data['educations'] = Education::where('user_id', auth()->user()->id)->get()->pluck('education_name', 'id');
         $data['education_selected'] = null;
 
-        $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('company_name', 'id');
+        $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('name_with_duration', 'id');
         $data['experience_selected'] = null;
 
         $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('slug_title', 'id');
@@ -106,7 +106,7 @@ class ResumeController extends Controller
             'education.*' => 'required|exists:education,id',
             'show_duration' => "required",
             'type' => 'required',
-            'slug' => 'required',
+
 
 
         ]);
@@ -149,7 +149,7 @@ class ResumeController extends Controller
         $data['educations'] = Education::where('user_id', auth()->user()->id)->get()->pluck('education_name', 'id');
         $data['education_selected'] =  json_decode($resume->education_ids);
 
-        $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('company_name', 'id');
+        $data['experiences'] = Experience::where('user_id', auth()->user()->id)->get()->pluck('name_with_duration', 'id');
         $data['experience_selected'] =  json_decode($resume->experience_ids);
 
         $data['projects'] = Project::where('user_id', auth()->user()->id)->get()->pluck('slug_title', 'id');
@@ -168,7 +168,6 @@ class ResumeController extends Controller
             return redirect()->route('admin.dashboard');
         }
         $request->validate([
-            'slug' => 'required',
 
             'title' => 'required|unique:projects,title',
             'type' => 'required',

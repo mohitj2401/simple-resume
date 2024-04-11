@@ -43,6 +43,9 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" />
     @if (isset($customCss))
         {{ $customCss }}
     @endif
@@ -435,57 +438,179 @@
             </footer> --}}
         </div>
     </div>
-    <!-- latest jquery-->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <!-- Bootstrap js-->
-    <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <!-- feather icon js-->
-    <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
-    <!-- scrollbar js-->
-    <script src="{{ asset('assets/js/scrollbar/simplebar.js') }}"></script>
-    <script src="{{ asset('assets/js/scrollbar/custom.js') }}"></script>
-    <!-- Sidebar jquery-->
-    <script src="{{ asset('assets/js/config.js') }}"></script>
-    <!-- Plugins JS start-->
-    <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset('assets/js/sidebar-pin.js') }}"></script>
-    <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
-    <script src="{{ asset('assets/js/header-slick.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+    {{-- <div class="modal fade" id="ai_model" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> Generated Result</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="card height-equal">
+                    <div class="card-body" id="ai_result">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="modal fade" id="ai_form_model" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> Generate Result</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="card height-equal">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="form-label" for="validationTextarea">Description</label>
+                                {!! Form::textarea('description', $project->description ?? '', [
+                                    'class' => 'form-control',
+                                    'id' => 'project_desc',
+                                    'required',
+                                ]) !!}
+
+                            </div>
+                            <div class="col-12 pt-2">
+                                <button class="btn btn-success pull-right" id="generate_pointers">Generate Pointer</a>
+                            </div>
+
+                            <div class="col-12">
+                                <h4>Result </h4>
+                                <div class="card-body" id="ai_result">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- latest jquery-->
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+            crossorigin="anonymous"></script>
+        <!-- Bootstrap js-->
+        <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+        <!-- feather icon js-->
+        <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+        <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+        <!-- scrollbar js-->
+        <script src="{{ asset('assets/js/scrollbar/simplebar.js') }}"></script>
+        <script src="{{ asset('assets/js/scrollbar/custom.js') }}"></script>
+        <!-- Sidebar jquery-->
+        <script src="{{ asset('assets/js/config.js') }}"></script>
+        <!-- Plugins JS start-->
+        <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+        <script src="{{ asset('assets/js/sidebar-pin.js') }}"></script>
+        <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
+        <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
+        <script src="{{ asset('assets/js/header-slick.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('assets/js/chart/apex-chart/moment.min.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <!-- calendar js-->
-    {{-- <script src="{{ asset('assets/js/dashboard/default.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom1.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-range-picker/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-range-picker/datepicker-range-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
-    <script src="{{ asset('assets/js/animation/wow/wow.min.js') }}"></script>
-    <!-- Plugins JS Ends-->
-    <!-- Theme js-->
-    <script src="{{ asset('assets/js/script.js') }}"></script>
-    <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>
-    <!-- Plugin used-->
+        <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
+        <!-- calendar js-->
+        {{-- <script src="{{ asset('assets/js/dashboard/default.js') }}"></script> --}}
+        <script src="{{ asset('assets/js/notify/index.js') }}"></script>
+        <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+        <script src="{{ asset('assets/js/datatable/datatables/datatable.custom1.js') }}"></script>
+        <script src="{{ asset('assets/js/datepicker/date-range-picker/moment.min.js') }}"></script>
+        <script src="{{ asset('assets/js/datepicker/date-range-picker/datepicker-range-custom.js') }}"></script>
+        <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
+        <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
+        <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
+        <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
+        <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
+        <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+        <script src="{{ asset('assets/js/animation/wow/wow.min.js') }}"></script>
+        <!-- Plugins JS Ends-->
+        <!-- Theme js-->
+        <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>
+        <!-- Plugin used-->
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        new WOW().init();
-    </script>
-    @if (isset($customJs))
-        {{ $customJs }}
-    @endif
+
+
+        <script>
+            new WOW().init();
+
+            function bold(text) {
+                var bold = /\*\*(.*?)\*\*/gm;
+                var html = text.replace(bold, '<strong>$1</strong>');
+                var html = html.replace(/\n/g, "<br />")
+                return html;
+            }
+            // $(document).ready(function() {
+            //     toastr.options = {
+            //         "positionClass": 'toast-center-center',
+            //         "closeButton": false,
+            //         "showDuration": "5000",
+            //         "hideDuration": "5000",
+            //         "timeOut": "5000",
+            //         "extendedTimeOut": "0",
+            //         "showEasing": "swing",
+            //         "hideEasing": "linear",
+            //         "showMethod": "fadeIn",
+            //         "hideMethod": "fadeOut"
+            //     };
+            // });
+
+            $(document).on('click', '#generate_pointers', function(e) {
+                e.preventDefault();
+                var description = $('#project_desc').val();
+                $("#generate_pointers").attr('disabled',
+                    true);
+                $.ajax({
+                    type: "get",
+                    url: "{{ route('generate_pointers') }}",
+                    data: {
+                        'description': description
+                    },
+
+                    success: function(response) {
+
+                        toastr.success(response.message);
+                        $('#ai_result').empty();
+
+                        $('#ai_result').append(bold(response.output));
+
+                        $("#generate_pointers").attr('disabled',
+                            false);
+                    },
+                    error: function(err) {
+                        toastr.error(err.responseJSON.message);
+                        $("#generate_pointers").attr('disabled',
+                            false);
+                    }
+                });
+            });
+            $(document).on('click', '#open_ai_form', function(e) {
+                e.preventDefault();
+
+
+                $('#ai_form_model').modal('show');
+
+
+            });
+        </script>
+
+        @if (isset($customJs))
+            {{ $customJs }}
+        @endif
 </body>
 
 </html>

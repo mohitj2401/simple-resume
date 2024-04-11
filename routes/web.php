@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('education', EducationController::class);
     Route::resource('resumes', ResumeController::class);
     Route::get('download/{resume}', [ResumeController::class, 'download']);
-
+    Route::get('generate_pointers', [ProjectController::class, 'generatePointers'])->name('generate_pointers');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

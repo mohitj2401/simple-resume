@@ -20,7 +20,7 @@ class ProjectRepository
     {
         try {
             $input = request()->only([
-                'title', 'type', 'description', 'start_date', 'end_date'
+                'title', 'type', 'description', 'start_date', 'end_date', 'slug'
             ]);
 
 

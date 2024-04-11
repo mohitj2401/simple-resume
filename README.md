@@ -11,6 +11,7 @@ Simple-Resume is a user-friendly and efficient resume-building platform crafted 
 The following tools were used in this project:
 
 - [Laravel](https://laravel.com/)
+- [Gemini AI ](https://gemini.google.com/)
 
 
 
@@ -33,6 +34,10 @@ composer install
 
 # Duplicate the .env.example file and name it .env
 cp .env.example .env
+
+
+# Duplicate the .env.example file and name it .env
+Provide GEMINI_API_KEY in .env
 
 # Generate Application Key
 php artisan key:generate

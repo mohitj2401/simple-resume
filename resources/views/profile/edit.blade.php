@@ -24,7 +24,8 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="mb-3">{{ $page }}</h4>
+                            <h4 class="modal-title mb-3">{{ $page }}</h4>
+                            <button type="button" class="btn btn-primary " id="open_ai_form">Gemini AI</button>
                         </div>
                         <div class="card-body">
                             {!! Form::open([
@@ -98,6 +99,21 @@
                                 </div>
 
                             </div>
+
+                            <div class="col-12">
+
+                                <label class="form-label" for="validationTextarea">Summary</label>
+                                {!! Form::textarea('summary', $user->summary ?? '', [
+                                    'class' => 'form-control',
+                                ]) !!}
+
+
+
+                                <div class="invalid-feedback" id="summary_error">Please select valid Cerificates
+                                </div>
+
+                            </div>
+
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit">Submit form</button>
                             </div>
