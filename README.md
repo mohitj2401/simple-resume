@@ -36,7 +36,7 @@ composer install
 cp .env.example .env
 
 
-# Duplicate the .env.example file and name it .env
+# Provide Api key .env file and name it GEMINI_API_KEY
 Provide GEMINI_API_KEY in .env
 
 # Generate Application Key
