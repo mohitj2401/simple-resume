@@ -13,6 +13,7 @@ The following tools were used in this project:
 
 - [Laravel](https://laravel.com/)
 - [Gemini AI ](https://gemini.google.com/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
 
 
 
@@ -21,7 +22,7 @@ The following tools were used in this project:
 Before starting checkout sample :checkered_flag:, [Resume](sample_resume.pdf)
 
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting ( Composer ) ##
 
 ```bash
 # Clone this project
@@ -50,5 +51,28 @@ php artisan migrate --seed
 php artisan serve
 
 # Open your web browser and navigate to http://localhost to view the application.
+```
+
+## :checkered_flag: Starting ( Docker ) ##
+
+```bash
+# Clone this project
+ git clone https://github.com/mohitj2401/simple-resume
+
+# Access
+cd simple-resume
+
+# Provide Api key .env file and name it GEMINI_API_KEY
+Provide GEMINI_API_KEY in .env
+
+# Install dependencies
+download docker
+
+# start and run docker container in detach mode
+docker composer up -d
+
+
+
+# Open your web browser and navigate to http://localhost:8000 to view the application.
 ```
 
