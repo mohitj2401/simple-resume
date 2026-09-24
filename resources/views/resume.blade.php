@@ -127,7 +127,7 @@
                         style="font-size:9.5pt; color:#1155cc;">{{ str_replace('https://', '', auth()->user()->github) }}</span>
                 </u>
             </a>
-            |
+            
             <a href="{{ auth()->user()->linkdin }}" style="text-decoration:none;">
                 <u><span
                         style="font-size:9.5pt; color:#1155cc;">{{ str_replace('https://www.', '', auth()->user()->linkdin) }}</span></u></a>
@@ -138,14 +138,12 @@
         <div align="center" style="margin-left:0.6pt;">
             <hr size="2" align="center" style="width:100%;">
         </div>
+       
+
         <p class="description-text">
-            <strong><span style="color:#1c033c;">Languages: </span></strong><span
-                style="color:#1c033c;">{{ implode(', ',$resume->skills()->where('type', 0)->get()->pluck('name')->toArray()) }}</span>
-        </p>
-        <p class="description-text">
-            <strong><span style="color:#1c033c;">Technologies &amp; Tools: </span></strong>
-            <span
-                style="color:#1c033c;">{{ implode(', ',$resume->skills()->where('type', '!=', 0)->get()->pluck('name')->toArray()) }}</span>
+            <strong><span style="color:#1c033c;">Soft Skills: </span></strong>
+            <span style="color:#1c033c;">Attention to detail, Teamwork & communication, Time management, Quick learner,
+                Problem-solving, Report writing, Industrial hygiene & safety awareness</span>
         </p>
         <br>
         <p class="heading-title">
@@ -166,10 +164,29 @@
                 <span style="color:#4b28a4;font-weight: bold;" class="text-md"><i>{{ $item->job_title }}</i></span>
             </div>
             <div class="float-clear"></div>
-
-            <div style="margin-bottom:5px">
-                {!! $item->description !!}
+            @if($item->company_name!='Indus Pharma Pvt. Ltd.')
+              <div style="margin-bottom:5px">
+                <ul>
+                    <li>Gained hands-on experience in Bolus and Liquid formulation manufacturing, including granulation,
+                        drying, compression, filling, and packaging operations.</li>
+                    <li>Assisted in Quality Assurance activities: documentation (SOPs, BMR/BPR), GMP compliance, and
+                        audits.</li>
+                    <li>Learned Quality Control testing using instruments like HPLC, UV, pH meter, Karl Fischer, and
+                        Moisture Analyzer.</li>
+                    <li>Understood complete process flow from production to final product testing.</li>
+                </ul>
             </div>
+            @else  
+              <div style="margin-bottom:5px">
+                <ul>
+                    <li>Performed water testing, including raw water analysis, as per QC standards.</li>
+                    <li>Handled UV systems for testing and monitoring.</li>
+                    <li>Followed GMP guidelines, documentation, and laboratory safety practices.</li>
+                    <li>Gained hands-on experience in pharmaceutical quality control processes.</li>
+                </ul>
+            </div>
+            @endif
+          
         @endforeach
         <br>
         <p class="heading-title">

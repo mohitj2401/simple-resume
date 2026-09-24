@@ -206,6 +206,7 @@ class ResumeController extends Controller
             toastr()->error('Invailed User Right', 'Oops');
             return redirect()->route('admin.dashboard');
         }
+        \Log::info($resume);
         $data['resume'] = $resume;
         if ($resume->type == "normal")
             $pdf = Pdf::loadView('resume', $data);

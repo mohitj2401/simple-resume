@@ -28,7 +28,6 @@ use Spatie\Browsershot\Browsershot;
 */
 
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin.dashboard');
     Route::resource('roles', RoleController::class);

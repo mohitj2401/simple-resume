@@ -218,7 +218,8 @@ class ProjectController extends Controller
 
         $client = Gemini::client(env('GEMINI_API_KEY'));
 
-        $result = $client->geminiPro()->generateContent(request()->description);
+    \Log::info($client->models()->list()->models);
+        $result = $client->generativeModel(model: 'gemini-2.5-flash')->generateContent(request()->description);
 
         return response([
             "message" => "Pointer Generated",

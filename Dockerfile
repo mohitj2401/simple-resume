@@ -1,4 +1,4 @@
-FROM php:8.2-cli as php
+FROM php:8.3-cli as php
 
 RUN apt-get update
 
